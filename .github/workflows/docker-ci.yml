@@ -17,7 +17,7 @@
 
       - name: Push Docker image to Docker Hub
           uses: docker/login-action@v1
-  env:
-    DOCKER_USER: ${{ secrets.DTEST_NAME }}
-    DOCKER_TOKEN: ${{ secrets.DTEST_TOKEN }}
-  run: echo "${DTEST_TOKEN}" | docker login -u "${DTEST_NAME}" --password-stdin
+          with:
+            DOCKER_USER: ${{ secrets.DTEST_NAME }}
+            DOCKER_TOKEN: ${{ secrets.DTEST_TOKEN }}
+      -run: docker push dtest/dtest001:latest .
